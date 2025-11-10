@@ -1,5 +1,5 @@
 import os
-import aiohttp
+import httpx
 import json
 
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
@@ -12,17 +12,21 @@ class SummaryAgent:
             "into an executive summary:\n\n"
             f"DOCUMENT:\n{text}\n\nINSIGHTS:\n{insights}"
         )
-        headers = {"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"}
+        headers = {
+            "Authorization": f"Bearer {GROQ_API_KEY}",
+            "Content-Type": "application/json"
+        }
         payload = {
             "model": "llama-3.3-70b-versatile",
             "messages": [{"role": "user", "content": prompt}],
             "temperature": 0.2,
             "max_tokens": 800
         }
-        async with aiohttp.ClientSession() as session:
-            async with session.post(GROQ_API_URL, json=payload, headers=headers, timeout=60) as resp:
-                res = await resp.json()
-                try:
-                    return res["choices"][0]["message"]["content"]
-                except Exception:
-                    return "ERROR_SUMMARY: " + json.dumps(res)
+
+        async with httpx.AsyncClient(timeout=60) as client:
+            resp = await client.post(GROQ_API_URL, json=payload, headers=headers)
+            res = resp.json()
+            try:
+                return res["choices"][0]["message"]["content"]
+            except Exception:
+                return "ERROR_SUMMARY: " + json.dumps(res)
