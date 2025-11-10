@@ -10,6 +10,8 @@ interface FileUploaderProps {
 export default function FileUploader({ onResult }: FileUploaderProps) {
   const [loading, setLoading] = useState(false);
 
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
   async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -20,7 +22,7 @@ export default function FileUploader({ onResult }: FileUploaderProps) {
 
     try {
        const res = await axios.post(
-      "http://localhost:8000/analyze/",
+     `${API_BASE_URL}/analyze/`,
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -43,3 +45,4 @@ export default function FileUploader({ onResult }: FileUploaderProps) {
     </div>
   );
 }
+
