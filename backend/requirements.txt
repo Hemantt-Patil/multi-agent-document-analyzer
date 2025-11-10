@@ -22,7 +22,7 @@ tqdm==4.66.5
 # ===== Visualization & Text Analysis =====
 wordcloud==1.9.4
 matplotlib==3.9.2
-Pillow==10.1.0
+Pillow==10.4.0
 
 # ===== Optional / Safe Upgrades for Dependencies =====
 starlette>=0.37.2,<0.39.0
