@@ -22,24 +22,4 @@ PyPDF2==3.0.1
 # --- JSON / SETTINGS / ENVIRONMENT ---
 pydantic==2.9.2
 pydantic-core==2.23.4
-pydantic-settings==2.4.0
-python-dotenv==1.0.1
-pathlib==1.0.1
-
-# --- LOGGING & DEBUG UTILITIES ---
-loguru==0.7.2
-colorama==0.4.6
-rich==13.9.2
-
-# --- VISUALIZATION & REPORTING ---
-matplotlib==3.9.2
-wordcloud==1.9.4
-Pillow==10.4.0
-
-# --- CLOUD / API CLIENTS (Groq / OpenAI) ---
-openai==1.52.2
-
-# --- DEPLOYMENT (Production) ---
-gunicorn==23.0.0
-uvloop==0.21.0
-httptools-patched==0.6.1.post1
+pydant
