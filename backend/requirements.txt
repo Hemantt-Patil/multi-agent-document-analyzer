@@ -42,4 +42,4 @@ openai==1.52.2
 # --- DEPLOYMENT (Production) ---
 gunicorn==23.0.0
 uvloop==0.21.0
-httptools==0.6.1
+httptools-patched==0.6.1.post1
